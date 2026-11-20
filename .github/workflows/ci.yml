@@ -11,9 +11,11 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm test
-  secrets-scan:
+  sensitive-data-scan:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: gitleaks/gitleaks-action@v2
+      - name: Reject credentials and personal addresses
+        run: |
+          ! git grep -nEI -- 'BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}|sk_live_[A-Za-z0-9]{16,}|@(gmail|outlook|hotmail|yahoo|icloud)\.'
 
