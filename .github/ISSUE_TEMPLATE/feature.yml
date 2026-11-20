@@ -1,0 +1,17 @@
+name: Feature proposal
+description: Propose a scoped improvement
+title: "[Proposal] "
+body:
+  - type: textarea
+    id: outcome
+    attributes: { label: Desired outcome }
+    validations: { required: true }
+  - type: textarea
+    id: acceptance
+    attributes: { label: Acceptance criteria }
+    validations: { required: true }
+  - type: textarea
+    id: rights
+    attributes: { label: Attribution, safety and compatibility considerations }
+    validations: { required: true }
+
